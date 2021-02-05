@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<script>
+
+			let playerScore = 0;
+			let computerScore = 0;
+		
+
+			/* computerPlay declares an array with three possible choices, rock, paper, scissors.
+			It then returns a random index of the array in the form of a string. */
+			function computerPlay() {
+				let possibleChoices = ["rock", "paper", "scissors"];
+				return randomSelection = possibleChoices[Math.floor(Math.random() 
+					   * possibleChoices.length)];
+			}
+			
+			/* playRound takes in the arguments playerSelection and computerSelection and
+			returns a string letting the player know if they won or lost. It's been commented out and
+			appropriated in the below function. */
+			
+			function playRound(playerSelection, computerSelection) {
+				let playerInput = playerSelection.toLowerCase();
+
+				if (playerInput == "rock" && computerSelection == "scissors" ||
+					playerInput == "paper" && computerSelection == "rock" ||
+					playerInput == "scissors" && computerSelection == "paper") {
+						playerScore++;
+						return "You win, " + playerInput + " beats " + computerSelection + ".";
+					} 
+					
+				else if (playerInput == "rock" && computerSelection == "paper" ||
+						playerInput == "paper" && computerSelection == "scissors" ||
+						playerInput == "scissors" && computerSelection == "rock") {
+							computerScore++;
+							return "You lose, " + computerSelection + " beats " + playerSelection + ".";
+							 }
+				else {
+						playerScore++;
+						computerScore++;
+						return "Tie.";
+					}
+			}
+
+			/* game() plays a five round game. Accomplished by playing 5 rounds with a for loop, 
+			and then comparing scores via if else statements. The for loops calls the playRound function.
+			There is also a prompt function that assigns the input to playerSelection. */
+			
+			function game() {
+				for (let i = 0; i < 5; i++) {
+					let playerSelection = prompt("Choose either rock, paper, or scissors.");
+					const computerSelection = computerPlay();
+					console.log(playRound(playerSelection, computerSelection))
+				}
+
+				if (playerScore > computerScore) {
+					console.log(`You win the game. ${playerScore} to ${computerScore}.`);
+				} else if (playerScore < computerScore) {
+					console.log(`You lose the game. ${playerScore} to ${computerScore}.`);
+				} else {
+					console.log(`Tie. ${playerScore} to ${computerScore}`);
+				}
+			}
+
+		
+
+			
+		game();
+			
+			
+		</script>
+	</body>
+</html>
